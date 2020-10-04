@@ -2,6 +2,8 @@ var app = new Vue({
     el: '#app',
     data () {
         return {
+            i: 0,
+            response: null,
             language: null,
             error: null,
             loading: true,
@@ -17,26 +19,34 @@ var app = new Vue({
     },
     methods: {
         search() {
-            if (this.language) {
-                var params = {
-                    params: {
-                        q: 'is:open language:'+this.language,
-                    }
-                };
+            if (this.i == 0) {
+                if (this.language) {
+                    var params = {
+                        params: {
+                            q: 'is:open language:'+this.language,
+                        }
+                    };
+                } else {
+                    var params = {
+                        params: {
+                            q: 'is:open'
+                        }
+                    };
+                }
+                axios.get('https://api.github.com/search/issues', params)
+                    .then(function (response) {
+                        this.response = response;
+                        this.setIssue(response);
+                    }.bind(this))
+                    .catch(function (error) {
+                        this.error = error;
+                    }.bind(this));
             } else {
-                var params = {
-                    params: {
-                        q: 'is:open'
-                    }
-                };
+                this.setIssue(this.response);
+                if (this.i == 5) {
+                    this.i = 0;
+                }
             }
-            axios.get('https://api.github.com/search/issues', params)
-            .then(function (response) {
-                this.setIssue(response);
-            }.bind(this))
-            .catch(function (error) {
-                this.error = error;
-            }.bind(this));
         },
         previous() {
             this.hasPrevious = false;
@@ -45,6 +55,8 @@ var app = new Vue({
         },
         setIssue(response) {
             let issues = response.data.items;
+
+            this.i = this.i+1;
 
             this.prev = this.issue;
 
