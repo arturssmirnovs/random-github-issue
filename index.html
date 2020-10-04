@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<title>Random GitHub issue</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/style.css">
+<body>
+
+<video autoplay="" loop="" style="background-image:url('video.png')" muted="">
+    <source src="video.mp4">
+    <source src="video.webm">
+</video>
+
+<div id="app">
+    <div class="text-wrapper">
+        <h1>Random GitHub Issue</h1>
+        <h2>If you don't have issue, get one!</h2>
+        <p>This small project help's you to find random issue on GitHub, get started and contribute to open source!<br/>Find your issue in {{total}} opened issues on GitHub.</p>
+        <div v-if="!loading">
+            <button v-on:click="search">Give me issue</button>
+            <p class="language-text">Specify language:</p>
+            <ul class="languages">
+                <li @click="language = 'JavaScript'" :class="[language == 'JavaScript' ? 'active' : '', '']">JavaScript</li>
+                <li @click="language = 'Python'" :class="[language == 'Python' ? 'active' : '', '']">Python</li>
+                <li @click="language = 'Java'" :class="[language == 'Java' ? 'active' : '', '']">Java</li>
+                <li @click="language = 'Go'" :class="[language == 'Go' ? 'active' : '', '']">Go</li>
+                <li @click="language = 'TypeScript'" :class="[language == 'TypeScript' ? 'active' : '', '']">TypeScript</li>
+                <li @click="language = 'C++'" :class="[language == 'C++' ? 'active' : '', '']">C++</li>
+                <li @click="language = 'Ruby'" :class="[language == 'Ruby' ? 'active' : '', '']">Ruby</li>
+                <li @click="language = 'PHP'" :class="[language == 'PHP' ? 'active' : '', '']">PHP</li>
+                <li @click="language = 'C#'" :class="[language == 'C#' ? 'active' : '', '']">C#</li>
+                <li @click="language = 'C'" :class="[language == 'C' ? 'active' : '', '']">C</li>
+                <li @click="language = 'Shell'" :class="[language == 'Shell' ? 'active' : '', '']">Shell</li>
+                <li @click="language = 'Scala'" :class="[language == 'Scala' ? 'active' : '', '']">Scala</li>
+                <li @click="language = 'Dart'" :class="[language == 'Dart' ? 'active' : '', '']">Dart</li>
+                <li @click="language = 'Rust'" :class="[language == 'Rust' ? 'active' : '', '']">Rust</li>
+                <li @click="language = 'Kotlin'" :class="[language == 'Kotlin' ? 'active' : '', '']">Kotlin</li>
+                <li @click="language = 'Swift'" :class="[language == 'Swift' ? 'active' : '', '']">Swift</li>
+            </ul>
+        </div>
+    </div>
+    <div class="results-wrapper">
+        <div v-if="!loading">
+            <div class="card">
+                <h3>{{issue.repository}}</h3>
+                <a :href="issue.html_url" target="_blank">{{ issue.title }} <span>#{{ issue.number }}</span></a>
+                <p>{{ issue.body ? issue.body : "-" }}</p>
+                <p class="by">Created on {{ issue.created_at }} by <a :href="issue.user.html_url"><img :src="issue.user.avatar_url" height="50"> {{ issue.user.login }}</a> </p>
+                <a :href="issue.html_url" target="_blank">View issue</a>
+            </div>
+            <a href="#" v-on:click="previous" v-if="hasPrevious" class="prev">Previous</a>
+        </div>
+        <div v-else>
+            <div class="card">
+                <img src="loading.gif" height="50"><br/>
+            </div>
+        </div>
+    </div>
+
+    <div v-if="error" class="error">{{error}}</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
