@@ -22,22 +22,22 @@
             <button v-on:click="search">Give me issue</button>
             <p class="language-text">Specify language:</p>
             <ul class="languages">
-                <li @click="language = 'JavaScript'" :class="[language == 'JavaScript' ? 'active' : '', '']">JavaScript</li>
-                <li @click="language = 'Python'" :class="[language == 'Python' ? 'active' : '', '']">Python</li>
-                <li @click="language = 'Java'" :class="[language == 'Java' ? 'active' : '', '']">Java</li>
-                <li @click="language = 'Go'" :class="[language == 'Go' ? 'active' : '', '']">Go</li>
-                <li @click="language = 'TypeScript'" :class="[language == 'TypeScript' ? 'active' : '', '']">TypeScript</li>
-                <li @click="language = 'C++'" :class="[language == 'C++' ? 'active' : '', '']">C++</li>
-                <li @click="language = 'Ruby'" :class="[language == 'Ruby' ? 'active' : '', '']">Ruby</li>
-                <li @click="language = 'PHP'" :class="[language == 'PHP' ? 'active' : '', '']">PHP</li>
-                <li @click="language = 'C#'" :class="[language == 'C#' ? 'active' : '', '']">C#</li>
-                <li @click="language = 'C'" :class="[language == 'C' ? 'active' : '', '']">C</li>
-                <li @click="language = 'Shell'" :class="[language == 'Shell' ? 'active' : '', '']">Shell</li>
-                <li @click="language = 'Scala'" :class="[language == 'Scala' ? 'active' : '', '']">Scala</li>
-                <li @click="language = 'Dart'" :class="[language == 'Dart' ? 'active' : '', '']">Dart</li>
-                <li @click="language = 'Rust'" :class="[language == 'Rust' ? 'active' : '', '']">Rust</li>
-                <li @click="language = 'Kotlin'" :class="[language == 'Kotlin' ? 'active' : '', '']">Kotlin</li>
-                <li @click="language = 'Swift'" :class="[language == 'Swift' ? 'active' : '', '']">Swift</li>
+                <li @click="language = 'JavaScript'; i=0; search();" :class="[language == 'JavaScript' ? 'active' : '', '']">JavaScript</li>
+                <li @click="language = 'Python'; i=0; search();" :class="[language == 'Python' ? 'active' : '', '']">Python</li>
+                <li @click="language = 'Java'; i=0; search();" :class="[language == 'Java' ? 'active' : '', '']">Java</li>
+                <li @click="language = 'Go'; i=0; search();" :class="[language == 'Go' ? 'active' : '', '']">Go</li>
+                <li @click="language = 'TypeScript'; i=0; search();" :class="[language == 'TypeScript' ? 'active' : '', '']">TypeScript</li>
+                <li @click="language = 'C++'; i=0; search();" :class="[language == 'C++' ? 'active' : '', '']">C++</li>
+                <li @click="language = 'Ruby'; i=0; search();" :class="[language == 'Ruby' ? 'active' : '', '']">Ruby</li>
+                <li @click="language = 'PHP'; i=0; search();" :class="[language == 'PHP' ? 'active' : '', '']">PHP</li>
+                <li @click="language = 'C#'; i=0; search();" :class="[language == 'C#' ? 'active' : '', '']">C#</li>
+                <li @click="language = 'C'; i=0; search();" :class="[language == 'C' ? 'active' : '', '']">C</li>
+                <li @click="language = 'Shell'; i=0; search();" :class="[language == 'Shell' ? 'active' : '', '']">Shell</li>
+                <li @click="language = 'Scala'; i=0; search();" :class="[language == 'Scala' ? 'active' : '', '']">Scala</li>
+                <li @click="language = 'Dart'; i=0; search();" :class="[language == 'Dart' ? 'active' : '', '']">Dart</li>
+                <li @click="language = 'Rust'; i=0; search();" :class="[language == 'Rust' ? 'active' : '', '']">Rust</li>
+                <li @click="language = 'Kotlin'; i=0; search();" :class="[language == 'Kotlin' ? 'active' : '', '']">Kotlin</li>
+                <li @click="language = 'Swift'; i=0; search();" :class="[language == 'Swift' ? 'active' : '', '']">Swift</li>
             </ul>
         </div>
     </div>

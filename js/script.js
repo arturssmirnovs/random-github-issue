@@ -19,6 +19,8 @@ var app = new Vue({
     },
     methods: {
         search() {
+            this.loading = true;
+
             if (this.i == 0) {
                 if (this.language) {
                     var params = {
