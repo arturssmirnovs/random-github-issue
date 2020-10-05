@@ -25,13 +25,13 @@ var app = new Vue({
                 if (this.language) {
                     var params = {
                         params: {
-                            q: 'is:open language:'+this.language,
+                          q: 'is:issue is:open language:'+this.language,
                         }
                     };
                 } else {
                     var params = {
                         params: {
-                            q: 'is:open'
+                          q: 'is:issue is:open'
                         }
                     };
                 }
